@@ -1,13 +1,14 @@
 from flask import Flask, render_template, request, redirect
 import pymysql.cursors
 import boto3
+import os
 
 # Configure Flask app
 app = Flask(__name__)
 app.config['BLOG_TITLE'] = 'My Blog' # Specify your blog title here
 
 # Configure RDS database connection
-db = pymysql.connect(host='your_rds_endpoint', user='your_username', password='your_password', db='your_database_name', charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
+db = pymysql.connect(host='your_rds_endpoint', user='your_username', password=os.environ['DB_PASSWORD'], db='your_database_name', charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
 
 # Configure S3 bucket
 s3 = boto3.client('s3', region_name='your_region')
