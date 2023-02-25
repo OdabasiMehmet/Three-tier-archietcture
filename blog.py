@@ -8,11 +8,11 @@ app = Flask(__name__)
 app.config['BLOG_TITLE'] = 'My Blog' # Specify your blog title here
 
 # Configure RDS database connection
-db = pymysql.connect(host='your_rds_endpoint', user='your_username', password=os.environ['DB_PASSWORD'], db='your_database_name', charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
+db = pymysql.connect(host='database-1.cezykzodxgyd.us-east-1.rds.amazonaws.com', user='admin', password=os.environ['DB_PASSWORD'], db='dailyblog', charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
 
 # Configure S3 bucket
-s3 = boto3.client('s3', region_name='your_region')
-bucket_name = 'your_bucket_name'
+s3 = boto3.client('s3', region_name='us-east-1')
+bucket_name = 'bucketforblog'
 
 # Define routes
 @app.route('/')
