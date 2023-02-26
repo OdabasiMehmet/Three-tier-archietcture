@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, redirect
 import pymysql.cursors
 import boto3
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # Configure Flask app
 app = Flask(__name__)
